@@ -1,0 +1,17 @@
+accelerate
+torch
+torchvision
+Pillow
+numpy
+omegaconf
+decord
+einops
+matplotlib
+diffusers==0.27.0
+scipy
+av
+imageio
+opencv_contrib_python
+transformers
+huggingface_hub
+onnxruntime
