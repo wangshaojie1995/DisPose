@@ -4,6 +4,26 @@ We present **DisPose** to mine more generalizable and effective control signals 
 <img src="https://anonymous.4open.science/r/DisPose-AB1D/pipeline.png" class="interpolation-image" alt="comparison." height="80%" width="80%" />
 </div>
 
+<table style="margin: 0 auto; border-collapse: collapse;">
+    <tr>
+        <td width="20%" style="border: none;">
+            <video width="100%" height="auto" style="display: block; margin: 0px auto;" controls autoplay loop src="https://anonymous.4open.science/r/DisPose-AB1D/assets/case1.mp4" muted="false"></video>
+        </td>
+        <td width="20%" style="border: none;">
+            <video width="100%" height="auto" style="display: block; margin: 0px auto;" controls autoplay loop src="https://anonymous.4open.science/r/DisPose-AB1D/assets/case2.mp4" muted="false"></video>
+        </td>
+        <td width="20%" style="border: none;">
+            <video width="100%" height="auto" style="display: block; margin: 0px auto;" controls autoplay loop src="https://anonymous.4open.science/r/DisPose-AB1D/assets/case3.mp4" muted="false"></video>
+        </td>
+        <td width="20%" style="border: none;">
+            <video width="100%" height="auto" style="display: block; margin: 0px auto;" controls autoplay loop src="https://anonymous.4open.science/r/DisPose-AB1D/assets/case4.mp4" muted="false"></video>
+        </td>
+        <td width="20%" style="border: none;">
+            <video width="100%" height="auto" style="display: block; margin: 0px auto;" controls autoplay loop src="https://anonymous.4open.science/r/DisPose-AB1D/assets/case5.mp4" muted="false"></video>
+        </td>
+    </tr>
+
+</table>
 
 ### Environment setup
 The code requires `python>=3.10`, as well as `torch>=2.0.1` and `torchvision>=0.15.2`. Please follow the instructions [here](https://pytorch.org/get-started/locally/) to install both PyTorch and TorchVision dependencies. The demo has been tested on CUDA version of 12.4.
