@@ -85,8 +85,8 @@ bash scripts/test.sh
 ```
 
 ### Tips
-- if your GPU memory is limited, try set env PYTORCH_CUDA_ALLOC_CONF=max_split_size_mb:256.
-- 
+- If your GPU memory is limited, try set `decode_chunk_size` in `test.yaml` to 1.
+- If you want to enhance the quality of the generated video, you could try some post-processing such as face swapping ([insightface](https://github.com/deepinsight/insightface)) and frame interpolation ([IFRNet](https://github.com/ltkong218/IFRNet)).
 
 ## 📣 Disclaimer
 This is official code of DisPose.
