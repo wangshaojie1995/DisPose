@@ -14,27 +14,37 @@ This repository is the official implementation of [DisPose](https://arxiv.org/ab
   - [💞 Acknowledgements](#-acknowledgements)
 
 ## 🎨 Gallery
-
-<table style="margin: 0 auto; border-collapse: collapse;">
-    <tr>
-        <td width="20%" style="border: none;">
-            <video width="100%" height="auto" style="display: block; margin: 0px auto;" controls autoplay loop src="https://anonymous.4open.science/r/DisPose-AB1D/assets/case1.mp4" muted="false"></video>
-        </td>
-        <td width="20%" style="border: none;">
-            <video width="100%" height="auto" style="display: block; margin: 0px auto;" controls autoplay loop src="https://anonymous.4open.science/r/DisPose-AB1D/assets/case2.mp4" muted="false"></video>
-        </td>
-        <td width="20%" style="border: none;">
-            <video width="100%" height="auto" style="display: block; margin: 0px auto;" controls autoplay loop src="https://anonymous.4open.science/r/DisPose-AB1D/assets/case3.mp4" muted="false"></video>
-        </td>
-        <td width="20%" style="border: none;">
-            <video width="100%" height="auto" style="display: block; margin: 0px auto;" controls autoplay loop src="https://anonymous.4open.science/r/DisPose-AB1D/assets/case4.mp4" muted="false"></video>
-        </td>
-        <td width="20%" style="border: none;">
-            <video width="100%" height="auto" style="display: block; margin: 0px auto;" controls autoplay loop src="https://anonymous.4open.science/r/DisPose-AB1D/assets/case5.mp4" muted="false"></video>
-        </td>
-    </tr>
-
+<table class="center">
+<tr>
+  <td><video src="https://github.com/user-attachments/assets/e2f5e263-3f86-4778-98b9-6d2d451b7516" autoplay></td>
+  <td><video src="https://github.com/user-attachments/assets/f8e761e3-7a7a-4812-ad61-023b33034a42" autoplay></td>
+  <td><video src="https://github.com/user-attachments/assets/9a6c7ea6-8c73-4a50-b594-f8eba239c405" autoplay></td>
+  <td><video src="https://github.com/user-attachments/assets/a0f97ac4-429e-4ca9-a794-7c02b5dc5405" autoplay></td>
+  <td><video src="https://github.com/user-attachments/assets/6e9d463c-f7c5-4de8-924b-1ad591e3a9a4" autoplay></td>
+</tr>
 </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## 🧙 Method Overview
 We present **DisPose** to mine more generalizable and effective control signals without additional dense input, which disentangles the sparse skeleton pose in human image animation into motion field guidance and keypoint correspondence.
