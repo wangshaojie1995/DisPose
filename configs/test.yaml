@@ -5,7 +5,7 @@ dift_model_path: ./pretrained_weights/stable-diffusion-v1-5
 
 # checkpoint path
 ckpt_path: ./pretrained_weights/MimicMotion_1-1.pth
-controlnet_path: ./pretrained_weights/controlnet.pth
+controlnet_path: ./pretrained_weights/DisPose.pth
 
 test_case:
   - ref_video_path: ./assets/example_data/videos/video1.mp4

@@ -1,8 +1,19 @@
 # DisPose: Disentangling Pose Guidance for Controllable Human Image Animation
-We present **DisPose** to mine more generalizable and effective control signals without additional dense input, which disentangles the sparse skeleton pose in human image animation into motion field guidance and keypoint correspondence.
-<div align='center'>
-<img src="https://anonymous.4open.science/r/DisPose-AB1D/pipeline.png" class="interpolation-image" alt="comparison." height="80%" width="80%" />
-</div>
+This repository is the official implementation of [DisPose](https://arxiv.org/abs/2412.09349).
+
+[![arXiv](https://img.shields.io/badge/arXiv-2412.09349-b31b1b.svg)](https://arxiv.org/abs/2412.09349)
+
+**📖 Table of Contents**
+  - [🎨 Gallery](#-gallery)
+  - [🧙 Method Overview](#-method-overview)
+  - [🔧 Preparations](#-preparations)
+    - [Setup repository and conda environment](#setup-repository-and-conda-environment)
+    - [Prepare model weights](#prepare-model-weights)
+  - [💫 Inference](#-inference)
+  - [📣 Disclaimer](#-disclaimer)
+  - [💞 Acknowledgements](#-acknowledgements)
+
+## 🎨 Gallery
 
 <table style="margin: 0 auto; border-collapse: collapse;">
     <tr>
@@ -25,7 +36,15 @@ We present **DisPose** to mine more generalizable and effective control signals 
 
 </table>
 
-### Environment setup
+## 🧙 Method Overview
+We present **DisPose** to mine more generalizable and effective control signals without additional dense input, which disentangles the sparse skeleton pose in human image animation into motion field guidance and keypoint correspondence.
+<div align='center'>
+<img src="https://anonymous.4open.science/r/DisPose-AB1D/pipeline.png" class="interpolation-image" alt="comparison." height="80%" width="80%" />
+</div>
+
+
+## 🔧 Preparations
+### Setup repository and conda environment
 The code requires `python>=3.10`, as well as `torch>=2.0.1` and `torchvision>=0.15.2`. Please follow the instructions [here](https://pytorch.org/get-started/locally/) to install both PyTorch and TorchVision dependencies. The demo has been tested on CUDA version of 12.4.
 ```
 conda create -n dispose python==3.10
@@ -33,8 +52,8 @@ conda activate dispose
 pip install -r requirements.txt
 ```
 
-### Download checkpoints
-1. Download the weights of  [DisPose](https://huggingface.co/lhxxxmad/DisPose/tree/main) and put `controlnet.pth` into `./pretrained_weights/`.
+### Prepare model weights
+1. Download the weights of  [DisPose](https://huggingface.co/lihxxx/DisPose) and put `DisPose.pth` into `./pretrained_weights/`.
 
 2. Download the weights of other components and put them into `./pretrained_weights/`:
   - [stable-video-diffusion-img2vid-xt-1-1](https://huggingface.co/stabilityai/stable-video-diffusion-img2vid-xt-1-1/tree/main)
@@ -49,7 +68,7 @@ Finally, these weights should be organized in `./pretrained_weights/`. as follow
 ```
 ./pretrained_weights/
 |-- MimicMotion_1-1.pth
-|-- controlnet.pth
+|-- DisPose.pth
 |-- dwpose
 |   |-- dw-ll_ucoco_384.onnx
 |   └── yolox_l.onnx
@@ -57,10 +76,22 @@ Finally, these weights should be organized in `./pretrained_weights/`. as follow
 |-- stable-video-diffusion-img2vid-xt-1-1
 ```
 
-### Model inference
+## 💫 Inference
 
 A sample configuration for testing is provided as `test.yaml`. You can also easily modify the various configurations according to your needs.
 
 ```
 bash scripts/test.sh 
 ```
+
+### Tips
+- if your GPU memory is limited, try set env PYTORCH_CUDA_ALLOC_CONF=max_split_size_mb:256.
+- 
+
+## 📣 Disclaimer
+This is official code of DisPose.
+All the copyrights of the demo images and videos are from community users. 
+Feel free to contact us if you would like remove them.
+
+## 💞 Acknowledgements
+We sincerely appreciate the code release of the following projects: [MimicMotion](https://github.com/Tencent/MimicMotion), [Moore-AnimateAnyone](https://github.com/MooreThreads/Moore-AnimateAnyone), [CMP](https://github.com/XiaohangZhan/conditional-motion-propagation).
