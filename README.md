@@ -2,6 +2,7 @@
 This repository is the official implementation of [DisPose](https://arxiv.org/abs/2412.09349).
 
 [![arXiv](https://img.shields.io/badge/arXiv-2412.09349-b31b1b.svg)](https://arxiv.org/abs/2412.09349)
+[![Project Page](https://img.shields.io/badge/Project-Website-green)](https://lihxxx.github.io/DisPose/)
 
 **📖 Table of Contents**
   - [🎨 Gallery](#-gallery)
