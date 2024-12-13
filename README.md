@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # DisPose: Disentangling Pose Guidance for Controllable Human Image Animation
 This repository is the official implementation of [DisPose](https://arxiv.org/abs/2412.09349).
 
@@ -107,6 +106,3 @@ Feel free to contact us if you would like remove them.
 
 ## 💞 Acknowledgements
 We sincerely appreciate the code release of the following projects: [MimicMotion](https://github.com/Tencent/MimicMotion), [Moore-AnimateAnyone](https://github.com/MooreThreads/Moore-AnimateAnyone), [CMP](https://github.com/XiaohangZhan/conditional-motion-propagation).
-=======
-# new branch
->>>>>>> upstream/website
