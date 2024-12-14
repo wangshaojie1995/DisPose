@@ -113,7 +113,6 @@ class PointAdapter(nn.Module):
                     for point_idx, (keypoint, subset) in enumerate(zip(keypoints, subsets)):
                         if subset != -1:
                             px, py = keypoint[0] * level_w, keypoint[1] * level_h
-                            # px, py = max(min(level_w, level_w * int(keypoint[0]) - 1), 0), max(min(level_h, level_h * int(keypoint[1]) - 1), 0)
 
                             x1 = int(px) - self.radius
                             y1 = int(py) - self.radius
@@ -123,73 +122,16 @@ class PointAdapter(nn.Module):
                             x1, x2 = max(min(x1, level_w - 1), 0), max(min(x2, level_w - 1), 0)
                             y1, y2 = max(min(y1, level_h - 1), 0), max(min(y2, level_h - 1), 0)
                             loss_mask[batch_idx][frame_idx][:, y1:y2, x1:x2] = 1.0
-                            # loss_mask[batch_idx][:, :, y1:y2, x1:x2] = 1.0
 
-            # for point_idx in point_index_list:
-            #     for frame_idx in range(num_frames):
-            #         px, py = point_tracker[frame_idx, point_idx]
-
-            #         if px < 0 or py < 0:
-            #             continue
-            #         else:
-            #             px, py = px / self.downsample_rate[0], py / self.downsample_rate[0]
-
-            #             x1 = int(px) - self.radius
-            #             y1 = int(py) - self.radius
-            #             x2 = int(px) + self.radius
-            #             y2 = int(py) + self.radius
-
-            #             x1, x2 = max(min(x1, loss_mask.shape[3] - 1), 0), max(min(x2, loss_mask.shape[3] - 1), 0)
-            #             y1, y2 = max(min(y1, loss_mask.shape[2] - 1), 0), max(min(y2, loss_mask.shape[2] - 1), 0)
-
-            #             loss_mask[:, :, y1:y2, x1:x2] = 1.0
         return loss_mask
 
     def forward(self, point_tracker, size, point_embedding, pose_latents, index_list=None, drop_rate=0.0, loss_type='global') -> List[torch.Tensor]:
-
-        # point_tracker = point_tracker.squeeze(0)
-        # point_embedding = point_embedding.squeeze(0)
         w, h = size
-        # num_frames, num_points = point_tracker.shape[:2]
         num_frames = len(point_tracker)
         batch_size, num_points, _ = point_embedding.shape
 
-        # if self.training:
-        # point_index_list = [point_idx for point_idx in range(num_points) if random.random() > drop_rate]
         loss_mask = self.generate_loss_mask(batch_size, point_tracker, num_frames, h, w, loss_type)
-        # else:
-        #     point_index_list = [point_idx for point_idx in range(num_points) if index_list is None or point_idx in index_list]
 
-        # s_time = time.time()
-        # # ######### from videoswap #############
-        # adapter_state_ = []
-        # for level_idx, module in enumerate(self.model_list):
-
-        #     downsample_rate = self.downsample_rate[level_idx]
-        #     level_w, level_h = w // downsample_rate, h // downsample_rate
-
-        #     point_feat = module(point_embedding)
-        #     level_adapter_state = torch.zeros((batch_size, num_frames, self.channels[level_idx], level_h, level_w)).to(point_feat.device, dtype=point_feat.dtype)
-        #     for batch_idx in range(batch_size):
-        #         for frame_idx in range(num_frames):
-        #             for point_idx, (keypoint, subset) in enumerate(zip(point_tracker[frame_idx]["candidate"][batch_idx], point_tracker[frame_idx]["subset"][batch_idx][0])):
-        #                 # px, py = point_tracker[frame_idx, point_idx]
-        #                 px, py = w * keypoint[0], h * keypoint[1]
-        #                 # if px < 0 or py < 0:
-        #                 #     continue
-        #                 # else:
-        #                 if subset != -1:
-        #                     px, py = px / downsample_rate, py / downsample_rate
-        #                     if point_embedding[batch_idx, point_idx].mean() != 0 or random.random() > drop_rate:
-        #                         level_adapter_state[batch_idx] = bilinear_interpolation(level_adapter_state[batch_idx], px, py, frame_idx, point_feat[batch_idx, point_idx])
-
-        #     adapter_state_.append(level_adapter_state)
-        # # ######### from videoswap #############
-        # e_time = time.time()
-        # print("swap point time:", e_time-s_time)
-        # s_time = time.time()
-
-        # ######### new imp #############
         downsample_rate = self.downsample_rate[0]
         level_w, level_h = w // downsample_rate, h // downsample_rate
         level_adapter_state = torch.zeros((batch_size, num_frames, self.embedding_channels, level_h, level_w)).to(point_embedding.device, dtype=point_embedding.dtype)
@@ -203,18 +145,12 @@ class PointAdapter(nn.Module):
                     keypoints, subsets = point_tracker[frame_idx]["candidate"], point_tracker[frame_idx]["subset"][0]
                     assert batch_size == 1
                 for point_idx, (keypoint, subset) in enumerate(zip(keypoints, subsets)):
-                    # px, py = point_tracker[frame_idx, point_idx]
                     if keypoint.min() < 0:
                         continue
                     px, py = keypoint[0] * level_w, keypoint[1] * level_h
                     px, py = max(min(int(px), level_w - 1), 0), max(min(int(py), level_h - 1), 0)
-                    # px, py = max(min(level_w, level_w * int(keypoint[0]) - 1), 0), max(min(level_h, level_h * int(keypoint[1]) - 1), 0)
-                    # if px < 0 or py < 0:
-                    #     continue
-                    # else:
                     if subset != -1:
                         if point_embedding[batch_idx, point_idx].mean() != 0 or random.random() > drop_rate:
-                            # level_adapter_state[batch_idx] = bilinear_interpolation(level_adapter_state[batch_idx], px, py, frame_idx, point_embedding[batch_idx, point_idx])
                             if level_mask[batch_idx, frame_idx, py, px] !=0:
                                 level_count[batch_idx, frame_idx, py, px] +=1
                             level_adapter_state[batch_idx, frame_idx, :, py, px] += point_embedding[batch_idx, point_idx]
@@ -239,21 +175,5 @@ class PointAdapter(nn.Module):
 
             point_feat = rearrange(point_feat, "(b f) c h w-> b f c h w", b=batch_size)
             adapter_state.append(point_feat)
-        # ######### new imp #############
-
-        # e_time = time.time()
-        # print("my point time:", e_time-s_time)
-        # error_mean = [(adapter_state[i] - adapter_state_[i]).mean() for i in range(len(adapter_state))]
-        # error_sum = [(adapter_state[i] - adapter_state_[i]).sum() for i in range(len(adapter_state))]
-        # for i in range(len(adapter_state)):
-        #     print("mae idenx_", i)
-        #     print((adapter_state[i] - adapter_state_[i]).mean())
-            # point_feat
-        # level_adapter_state = 
-
-        # if self.training:
-        #     return adapter_state, loss_mask
-        # else:
-        #     return adapter_state
         
         return adapter_state, loss_mask
