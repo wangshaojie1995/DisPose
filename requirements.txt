@@ -9,9 +9,9 @@ einops
 matplotlib
 diffusers==0.27.0
 scipy
-av
+av==12.0.0
 imageio
 opencv_contrib_python
 transformers
-huggingface_hub
+huggingface_hub==0.25.2
 onnxruntime
