@@ -5,14 +5,17 @@ This repository is the official implementation of [DisPose](https://arxiv.org/ab
 [![Project Page](https://img.shields.io/badge/Project-Website-green)](https://lihxxx.github.io/DisPose/)
 
 **📖 Table of Contents**
+- [DisPose: Disentangling Pose Guidance for Controllable Human Image Animation](#dispose-disentangling-pose-guidance-for-controllable-human-image-animation)
   - [🎨 Gallery](#-gallery)
   - [🧙 Method Overview](#-method-overview)
   - [🔧 Preparations](#-preparations)
     - [Setup repository and conda environment](#setup-repository-and-conda-environment)
     - [Prepare model weights](#prepare-model-weights)
   - [💫 Inference](#-inference)
+    - [Tips](#tips)
   - [📣 Disclaimer](#-disclaimer)
   - [💞 Acknowledgements](#-acknowledgements)
+  - [🔍 Citation](#-citation)
 
 ## 🎨 Gallery
 <table class="center">
@@ -24,28 +27,6 @@ This repository is the official implementation of [DisPose](https://arxiv.org/ab
   <td><video src="https://github.com/user-attachments/assets/6e9d463c-f7c5-4de8-924b-1ad591e3a9a4" autoplay></td>
 </tr>
 </table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ## 🧙 Method Overview
 We present **DisPose** to mine more generalizable and effective control signals without additional dense input, which disentangles the sparse skeleton pose in human image animation into motion field guidance and keypoint correspondence.
@@ -106,3 +87,14 @@ Feel free to contact us if you would like remove them.
 
 ## 💞 Acknowledgements
 We sincerely appreciate the code release of the following projects: [MimicMotion](https://github.com/Tencent/MimicMotion), [Moore-AnimateAnyone](https://github.com/MooreThreads/Moore-AnimateAnyone), [CMP](https://github.com/XiaohangZhan/conditional-motion-propagation).
+
+## 🔍 Citation
+
+```
+@article{li2024dispose,
+  title={DisPose: Disentangling Pose Guidance for Controllable Human Image Animation},
+  author={Li, Hongxiang and Li, Yaowei and Yang, Yuhang and Cao, Junjie and Zhu, Zhihong and Cheng, Xuxin and Chen Long},
+  journal={arXiv preprint arXiv:2412.09349},
+  year={2024}
+}
+```
