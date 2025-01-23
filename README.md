@@ -1,9 +1,13 @@
-# DisPose: Disentangling Pose Guidance for Controllable Human Image Animation
+# ICLR2025 DisPose: Disentangling Pose Guidance for Controllable Human Image Animation
 This repository is the official implementation of [DisPose](https://arxiv.org/abs/2412.09349).
 
 [![arXiv](https://img.shields.io/badge/arXiv-2412.09349-b31b1b.svg)](https://arxiv.org/abs/2412.09349)
 [![Project Page](https://img.shields.io/badge/Project-Website-green)](https://lihxxx.github.io/DisPose/)
 
+## 🔥 News
+- **`2025/01/23`**: DisPose is accepted to ICLR 2025.
+- **`2024/12/13`**: We have released the inference code and the checkpoints for DisPose.
+  
 **📖 Table of Contents**
 - [DisPose: Disentangling Pose Guidance for Controllable Human Image Animation](#dispose-disentangling-pose-guidance-for-controllable-human-image-animation)
   - [🎨 Gallery](#-gallery)
@@ -52,7 +56,7 @@ pip install -r requirements.txt
   - [stable-diffusion-v1-5](https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5/tree/main)
   - [dwpose](https://huggingface.co/yzd-v/DWPose/tree/main)
   - [MimicMotion](https://huggingface.co/tencent/MimicMotion/tree/main)
-3. Downlaod the weights of [CMP](https://huggingface.co/MyNiuuu/MOFA-Video-Hybrid/resolve/main/models/cmp/experiments/semiauto_annot/resnet50_vip%2Bmpii_liteflow/checkpoints/ckpt_iter_42000.pth.tar) and put it into `./mimicmotion/modules/cmp/experiments/semiauto_annot/resnet50_vip+mpii_liteflow/checkpoints`
+3. Download the weights of [CMP](https://huggingface.co/MyNiuuu/MOFA-Video-Hybrid/resolve/main/models/cmp/experiments/semiauto_annot/resnet50_vip%2Bmpii_liteflow/checkpoints/ckpt_iter_42000.pth.tar) and put it into `./mimicmotion/modules/cmp/experiments/semiauto_annot/resnet50_vip+mpii_liteflow/checkpoints`
 
 Finally, these weights should be organized in `./pretrained_weights/`. as follows:
 
@@ -83,7 +87,7 @@ bash scripts/test.sh
 ## 📣 Disclaimer
 This is official code of DisPose.
 All the copyrights of the demo images and videos are from community users. 
-Feel free to contact us if you would like remove them.
+Feel free to contact us if you would like to remove them.
 
 ## 💞 Acknowledgements
 We sincerely appreciate the code release of the following projects: [MimicMotion](https://github.com/Tencent/MimicMotion), [Moore-AnimateAnyone](https://github.com/MooreThreads/Moore-AnimateAnyone), [CMP](https://github.com/XiaohangZhan/conditional-motion-propagation).
